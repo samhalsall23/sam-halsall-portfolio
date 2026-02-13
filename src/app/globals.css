@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+:root {
+    --background: #f7f6f2;
+    --foreground: #171717;
+
+    /* ===== DESIGN SYSTEM - TEXT COLORS ===== */
+    --primary: #18181b; /* zinc-900 - Main headings, important text */
+    --secondary: #71717a; /* zinc-500 - Body text, descriptions */
+    --muted: #a1a1aa; /* zinc-400 - Subtle text, labels */
+    --subtle: #d4d4d8; /* zinc-300 - Very light text */
+
+    /* ===== DESIGN SYSTEM - UI COLORS ===== */
+    --ui-border: #e4e4e7; /* zinc-200 - Borders, dividers */
+    --ui-border-subtle: #f4f4f5; /* zinc-100 - Subtle borders */
+    --ui-icon: #52525b; /* zinc-600 - Icons, secondary elements */
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --font-sans: var(--font-inter);
+
+    /* Expose design tokens to Tailwind */
+    --color-primary: var(--primary);
+    --color-secondary: var(--secondary);
+    --color-muted: var(--muted);
+    --color-subtle: var(--subtle);
+    --color-ui-border: var(--ui-border);
+    --color-ui-border-subtle: var(--ui-border-subtle);
+    --color-ui-icon: var(--ui-icon);
+}
+
+body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+button {
+    cursor: pointer;
+}
+
+@layer utilities {
+    /* ===== TYPOGRAPHY SYSTEM ===== */
+
+    .text-display {
+        @apply text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight;
+    }
+
+    .text-heading-1 {
+        @apply text-4xl sm:text-5xl font-semibold leading-snug;
+    }
+
+    .text-heading-2 {
+        @apply text-2xl sm:text-3xl font-semibold leading-snug;
+    }
+
+    .text-heading-3 {
+        @apply text-xl sm:text-2xl font-semibold leading-snug;
+    }
+
+    .text-body {
+        @apply text-sm sm:text-base leading-relaxed;
+    }
+
+    .text-body-sm {
+        @apply text-sm leading-relaxed;
+    }
+
+    .text-body-xs {
+        @apply text-xs leading-relaxed;
+    }
+
+    .text-label {
+        @apply text-sm font-medium;
+    }
+
+    .text-caption {
+        @apply text-xs font-normal;
+    }
+
+    /* ===== COLOR UTILITIES ===== */
+
+    .border-default {
+        border-color: var(--ui-border);
+    }
+
+    .border-subtle {
+        border-color: var(--ui-border-subtle);
+    }
+
+    .subtle-dot-section {
+        position: relative;
+        background-image: radial-gradient(
+            var(--subtle) 0.5px,
+            transparent 0.6px
+        );
+        background-size: 20px 20px;
+        background-attachment: fixed;
+    }
+
+    .subtle-dot-section::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to bottom,
+            transparent 0%,
+            transparent 80%,
+            var(--color-background) 100%
+        );
+        pointer-events: none;
+    }
+}
