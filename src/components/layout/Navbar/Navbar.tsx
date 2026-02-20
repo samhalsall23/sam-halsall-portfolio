@@ -29,7 +29,7 @@ export default function Navbar() {
 
             {/* Desktop Navigation - centered */}
             <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:block">
-                <div className="mx-auto px-8 py-3 flex justify-center rounded-full backdrop-blur-md bg-white/15 shadow-md border border-white/20">
+                <div className="mx-auto px-8 py-3 flex justify-center rounded-full backdrop-blur-md bg-white/30 shadow-md border border-white/20">
                     <ul className="flex space-x-8">
                         {navItems.map((item) => (
                             <li

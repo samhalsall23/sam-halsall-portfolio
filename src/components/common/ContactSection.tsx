@@ -1,0 +1,78 @@
+import Link from "next/link";
+
+export function ContactSection() {
+    return (
+        <>
+            <div className="h-screen pointer-events-none" aria-hidden="true" />
+            <section id="contact" className="fixed inset-0 h-screen -z-10">
+                <div className="subtle-dot-section-reverse-zinc h-screen overflow-hidden border-t border-zinc-800 bg-foreground text-zinc-100 md:sticky md:bottom-0">
+                    <div
+                        className="pointer-events-none absolute -right-12 sm:-right-24 top-1/4 sm:top-1/3 h-80 sm:h-112 w-80 sm:w-md -translate-y-1/2 rounded-full bg-linear-to-tr from-purple-500/20 via-fuchsia-500/10 to-blue-500/5 blur-3xl"
+                        aria-hidden="true"
+                    />
+                    <div
+                        className="pointer-events-none absolute -left-12 sm:-left-24 bottom-1/4 sm:bottom-0 h-96 sm:h-128 w-96 sm:w-lg -translate-y-1/2 rounded-full bg-linear-to-bl from-blue-400/10 via-purple-400/10 to-pink-400/5 blur-3xl"
+                        aria-hidden="true"
+                    />
+                    <div className="flex items-center py-20 min-h-screen">
+                        <div className="mx-auto w-full max-w-4xl px-5 md:px-10 xl:px-12">
+                            <p className="text-sm font-normal uppercase tracking-wider text-zinc-400">
+                                Contact
+                            </p>
+                            <h2 className="mt-3 text-4xl font-semibold leading-tight text-white sm:text-5xl">
+                                Let&apos;s{" "}
+                                <span className="bg-linear-to-r from-purple-500 via-fuchsia-500 to-blue-500 bg-clip-text text-transparent">
+                                    build
+                                </span>{" "}
+                                something great.
+                            </h2>
+
+                            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-300">
+                                Open to new opportunities — reach me at{" "}
+                                <a
+                                    href="mailto:samhalsall23@gmail..com"
+                                    className="text-white underline underline-offset-4 hover:text-zinc-200">
+                                    samhalsall23@gmail.com
+                                </a>
+                            </p>
+
+                            <div className="mt-8 flex items-center gap-4">
+                                <Link
+                                    href="https://linkedin.com/in/samhalsall"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="LinkedIn"
+                                    className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-zinc-700 bg-zinc-900 text-zinc-200 transition hover:border-zinc-500 hover:text-white">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="20"
+                                        height="20"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor">
+                                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065Zm1.782 13.019H3.555V9h3.564v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003Z" />
+                                    </svg>
+                                </Link>
+
+                                <Link
+                                    href="https://github.com/samhalsall"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="GitHub"
+                                    className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-zinc-700 bg-zinc-900 text-zinc-200 transition hover:border-zinc-500 hover:text-white">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="20"
+                                        height="20"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor">
+                                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12Z" />
+                                    </svg>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </>
+    );
+}

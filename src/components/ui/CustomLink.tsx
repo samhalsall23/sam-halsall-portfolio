@@ -3,17 +3,19 @@ import Link from "next/link";
 import { cn } from "@/src/lib/utilities/cn";
 
 type CustomLinkProps = {
+    className?: string;
     href: string;
     text: string;
     variant?: "primary" | "secondary";
 };
 
-export default function CustomLink(props: CustomLinkProps) {
+export function CustomLink(props: CustomLinkProps) {
     // === PROPS ===
-    const { href, text, variant = "primary" } = props;
+    const { className, href, text, variant = "primary" } = props;
 
     // === CLASSES ===
     const linkClasses = cn(
+        className,
         "group inline-flex h-12 items-center justify-center rounded-full px-7 text-sm font-medium text-white shadow-sm transition ",
         variant === "primary" && "bg-primary text-white",
         variant === "secondary" && "bg-white/70 text-zinc-600"

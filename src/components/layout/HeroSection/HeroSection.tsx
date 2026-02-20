@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 import { BaseSection } from "../BaseSection/BaseSection";
-import CustomLink from "../../ui/CustomLink";
+import { CustomLink } from "../../ui/CustomLink";
 
-export default function HeroSection() {
+export function HeroSection() {
     return (
         <BaseSection
             id="hero"
