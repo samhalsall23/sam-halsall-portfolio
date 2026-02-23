@@ -4,12 +4,19 @@ import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BaseSection } from "../BaseSection/BaseSection";
-
-const navItems = ["Home", "Projects", "Experience", "Skills", "Contact"];
+import { NAV_ITEMS } from "@/src/lib/constants/nav";
 
 export default function Navbar() {
     // === STATE ===
     const [isOpen, setIsOpen] = useState(false);
+
+    // === HANDLERS ===
+    const scrollToSection = (id: string) => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.scrollIntoView({ behavior: "smooth" });
+        }
+    };
 
     return (
         <BaseSection id="navbar">
@@ -31,22 +38,26 @@ export default function Navbar() {
             <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:block">
                 <div className="mx-auto px-8 py-3 flex justify-center rounded-full backdrop-blur-md bg-white/30 shadow-md border border-white/20">
                     <ul className="flex space-x-8">
-                        {navItems.map((item) => (
+                        {NAV_ITEMS.map(({ label, id }) => (
                             <li
-                                key={item}
+                                key={label}
                                 className="relative text-text-primary overflow-hidden">
                                 <Link
-                                    href={`#${item.toLowerCase()}`}
+                                    href={`#${id}`}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        scrollToSection(id);
+                                    }}
                                     className="group block relative h-6">
                                     {/* Original Text */}
                                     <span className="block transform transition-transform duration-200 ease-in-out group-hover:-translate-y-full">
-                                        {item}
+                                        {label}
                                     </span>
                                     {/* Replacement Text */}
                                     <span
                                         aria-hidden="true"
                                         className="absolute left-0 top-0 block transform translate-y-full transition-transform duration-200 ease-in-out group-hover:translate-y-0">
-                                        {item}
+                                        {label}
                                     </span>
                                 </Link>
                             </li>
@@ -114,19 +125,27 @@ export default function Navbar() {
                             transition={{ duration: 0.2 }}
                             className="px-6 pb-6">
                             <ul className="flex flex-col items-center space-y-4">
-                                {navItems.map((item, index) => (
+                                {NAV_ITEMS.map(({ label, id }, index) => (
                                     <motion.li
-                                        key={item}
+                                        key={label}
                                         initial={{ opacity: 0, x: -10 }}
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{ delay: index * 0.05 }}
                                         className="relative overflow-hidden">
                                         <Link
-                                            href={`#${item.toLowerCase()}`}
-                                            onClick={() => setIsOpen(false)}
+                                            href={`#${id}`}
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                setIsOpen(false);
+                                                // Use setTimeout to fix race condition between menu closing and scrollIntoView
+                                                setTimeout(
+                                                    () => scrollToSection(id),
+                                                    0
+                                                );
+                                            }}
                                             className="group block relative h-6 px-2">
                                             {/* Original Text */}
-                                            <span>{item}</span>
+                                            <span>{label}</span>
                                         </Link>
                                     </motion.li>
                                 ))}

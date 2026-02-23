@@ -3,11 +3,13 @@ import Link from "next/link";
 import { BaseSection } from "../BaseSection/BaseSection";
 import { CustomLink } from "../../ui/CustomLink";
 import { GITHUB_LINK, LINKEDIN_LINK } from "@/src/lib/constants/personal-links";
+import { PERSONAL_EMAIL } from "@/src/lib/constants/contact-info";
+import { SECTION_IDS } from "@/src/lib/constants/nav";
 
 export function HeroSection() {
     return (
         <BaseSection
-            id="hero"
+            id={SECTION_IDS.Home}
             className="subtle-dot-section relative flex min-h-screen items-center overflow-hidden bg-background py-28 sm:py-32">
             {/* Background gradient blobs */}
             <div
@@ -47,7 +49,10 @@ export function HeroSection() {
                 {/* Call-to-actions */}
                 <div className="mt-8 sm:mt-6 flex flex-col justify-between sm:justify-start items-start gap-4 sm:flex-row sm:items-center">
                     <div className="flex gap-4">
-                        <CustomLink href="#contact" text="Contact me" />
+                        <CustomLink
+                            href={`mailto:${PERSONAL_EMAIL}`}
+                            text="Contact me"
+                        />
                         <CustomLink
                             href="#contact"
                             text="View resume"

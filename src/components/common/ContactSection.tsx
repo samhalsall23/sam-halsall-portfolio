@@ -1,11 +1,17 @@
+import { PERSONAL_EMAIL } from "@/src/lib/constants/contact-info";
 import { GITHUB_LINK, LINKEDIN_LINK } from "@/src/lib/constants/personal-links";
+import { SECTION_IDS } from "@/src/lib/constants/nav";
 import Link from "next/link";
 
 export function ContactSection() {
     return (
         <>
-            <div className="h-screen pointer-events-none" aria-hidden="true" />
-            <section id="contact" className="fixed inset-0 h-screen -z-10">
+            <div
+                id={SECTION_IDS.Contact}
+                className="h-screen pointer-events-none"
+                aria-hidden="true"
+            />
+            <section className="fixed inset-0 h-screen -z-10">
                 <div className="subtle-dot-section-reverse-zinc h-screen overflow-hidden border-t border-zinc-800 bg-foreground text-zinc-100 md:sticky md:bottom-0">
                     <div
                         className="pointer-events-none absolute -right-12 sm:-right-24 top-1/4 sm:top-1/3 h-80 sm:h-112 w-80 sm:w-md -translate-y-1/2 rounded-full bg-linear-to-tr from-purple-500/20 via-fuchsia-500/10 to-blue-500/5 blur-3xl"
@@ -29,11 +35,11 @@ export function ContactSection() {
                             </h2>
 
                             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-300">
-                                Open to new opportunities — reach me at{" "}
+                                Open to new opportunities - reach me at{" "}
                                 <a
-                                    href="mailto:samhalsall23@gmail..com"
+                                    href={`mailto:${PERSONAL_EMAIL}`}
                                     className="text-white underline underline-offset-4 hover:text-zinc-200">
-                                    samhalsall23@gmail.com
+                                    {PERSONAL_EMAIL}
                                 </a>
                             </p>
 

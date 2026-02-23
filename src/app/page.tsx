@@ -6,6 +6,7 @@ import { ClientProject } from "../components/common/ClientProject";
 import { ExperienceSection } from "../components/common/ExperienceSection";
 import { TechnicalSkillsSection } from "../components/common/TechnicalSkillsSection";
 import { ContactSection } from "../components/common/ContactSection";
+import { SECTION_IDS } from "../lib/constants/nav";
 import {
     NextjsIcon,
     ReactIcon,
@@ -23,7 +24,9 @@ export default function Home() {
             <div className="relative z-10">
                 <HeroSection />
 
-                <BaseSection id="projects" className="bg-background">
+                <BaseSection
+                    id={SECTION_IDS.Projects}
+                    className="bg-background">
                     <HeadingGroup
                         subtitle="FLAGSHIP PROJECT"
                         title="Full-Stack Product Engineering"

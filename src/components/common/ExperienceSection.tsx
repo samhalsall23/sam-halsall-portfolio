@@ -1,6 +1,7 @@
 import { BaseSection } from "../layout/BaseSection/BaseSection";
 import { HeadingGroup } from "../layout/HeadingGroup/HeadingGroup";
 import AnimateOnScrollWrapper from "../layout/AnimateOnScrollWrapper";
+import { SECTION_IDS } from "@/src/lib/constants/nav";
 
 type ExperienceEntry = {
     title: string;
@@ -81,7 +82,7 @@ function renderWithBold(text: string) {
 
 export function ExperienceSection() {
     return (
-        <BaseSection id="experience" className="bg-background">
+        <BaseSection id={SECTION_IDS.Experience} className="bg-background">
             <AnimateOnScrollWrapper>
                 <HeadingGroup
                     subtitle="EXPERIENCE"
