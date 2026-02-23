@@ -10,10 +10,12 @@ import {
     NextjsIcon,
     ReactIcon,
     SassIcon,
-    StorybookIcon,
-    StripeIcon,
     TailwindIcon,
 } from "../components/icon";
+import {
+    TAI_ELECTRICAL_GITHUB_LINK,
+    TAI_ELECTRICAL_LINK,
+} from "../lib/constants/project-links";
 
 export default function Home() {
     return (
@@ -40,8 +42,8 @@ export default function Home() {
                     <ul className="flex flex-col gap-8">
                         <li>
                             <ClientProject
-                                siteHref="#"
-                                githubHref="#"
+                                siteHref={TAI_ELECTRICAL_LINK}
+                                githubHref={TAI_ELECTRICAL_GITHUB_LINK}
                                 imgSrc="/assets/tai-electrical.png"
                                 title="⚡ Tai Electrical Services"
                                 desc="Built and deployed a production website for a local electrical business, integrating Google reviews, responsive layouts, and conversion-focused contact flows."
