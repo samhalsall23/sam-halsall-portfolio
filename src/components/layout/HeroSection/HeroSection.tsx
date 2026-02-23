@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { BaseSection } from "../BaseSection/BaseSection";
 import { CustomLink } from "../../ui/CustomLink";
+import { GITHUB_LINK, LINKEDIN_LINK } from "@/src/lib/constants/personal-links";
 
 export function HeroSection() {
     return (
@@ -57,7 +58,7 @@ export function HeroSection() {
                     {/* Social links */}
                     <div className="mt-4 sm:mt-0 flex items-center gap-3 sm:ml-2">
                         <Link
-                            href="https://linkedin.com/in/samhalsall"
+                            href={LINKEDIN_LINK}
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="LinkedIn"
@@ -72,7 +73,7 @@ export function HeroSection() {
                             </svg>
                         </Link>
                         <Link
-                            href="https://github.com/samhalsall"
+                            href={GITHUB_LINK}
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="GitHub"

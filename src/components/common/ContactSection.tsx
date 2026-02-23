@@ -1,3 +1,4 @@
+import { GITHUB_LINK, LINKEDIN_LINK } from "@/src/lib/constants/personal-links";
 import Link from "next/link";
 
 export function ContactSection() {
@@ -38,7 +39,7 @@ export function ContactSection() {
 
                             <div className="mt-8 flex items-center gap-4">
                                 <Link
-                                    href="https://linkedin.com/in/samhalsall"
+                                    href={LINKEDIN_LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label="LinkedIn"
@@ -54,7 +55,7 @@ export function ContactSection() {
                                 </Link>
 
                                 <Link
-                                    href="https://github.com/samhalsall"
+                                    href={GITHUB_LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label="GitHub"
