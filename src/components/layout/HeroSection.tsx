@@ -1,10 +1,10 @@
 import Link from "next/link";
 
-import { BaseSection } from "../BaseSection/BaseSection";
-import { CustomLink } from "../../ui/CustomLink";
-import { GITHUB_LINK, LINKEDIN_LINK } from "@/src/lib/constants/personal-links";
-import { PERSONAL_EMAIL } from "@/src/lib/constants/contact-info";
-import { SECTION_IDS } from "@/src/lib/constants/nav";
+import { BaseSection } from "./BaseSection";
+import { CustomLink } from "@/components/ui/index";
+import { GITHUB_LINK, LINKEDIN_LINK } from "@/lib/constants/personal-links";
+import { PERSONAL_EMAIL } from "@/lib/constants/contact-info";
+import { SECTION_IDS } from "@/lib/constants/nav";
 
 export function HeroSection() {
     return (

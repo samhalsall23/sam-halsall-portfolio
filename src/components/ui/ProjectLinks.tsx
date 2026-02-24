@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { cn } from "@/src/lib/utilities/cn";
+import { cn } from "@/lib/utilities/cn";
 
 type ProjectLinkItem = {
     href: string;

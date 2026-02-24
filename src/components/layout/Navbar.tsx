@@ -3,10 +3,10 @@
 import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { BaseSection } from "../BaseSection/BaseSection";
-import { NAV_ITEMS } from "@/src/lib/constants/nav";
+import { BaseSection } from "./BaseSection";
+import { NAV_ITEMS } from "@/lib/constants/nav";
 
-export default function Navbar() {
+export function Navbar() {
     // === STATE ===
     const [isOpen, setIsOpen] = useState(false);
 

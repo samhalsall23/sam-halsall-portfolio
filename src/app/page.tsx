@@ -1,22 +1,24 @@
-import { BaseSection } from "../components/layout/BaseSection/BaseSection";
-import { HeroSection } from "../components/layout/HeroSection/HeroSection";
-import { HeadingGroup } from "../components/layout/HeadingGroup/HeadingGroup";
-import { FlagshipProject } from "../components/common/FlagshipProject";
-import { ClientProject } from "../components/common/ClientProject";
-import { ExperienceSection } from "../components/common/ExperienceSection";
-import { TechnicalSkillsSection } from "../components/common/TechnicalSkillsSection";
-import { ContactSection } from "../components/common/ContactSection";
-import { SECTION_IDS } from "../lib/constants/nav";
+import { BaseSection, HeadingGroup, HeroSection } from "@/components/layout";
+import {
+    ClientProject,
+    ContactSection,
+    ExperienceSection,
+    FlagshipProject,
+    TechnicalSkillsSection,
+} from "@/components/common";
+import { SECTION_IDS } from "@/lib/constants/nav";
 import {
     NextjsIcon,
     ReactIcon,
     SassIcon,
     TailwindIcon,
-} from "../components/icon";
+} from "@/components/icon";
 import {
+    JACK_TODD_DESIGN_GITHUB_LINK,
+    JACK_TODD_DESIGN_LINK,
     TAI_ELECTRICAL_GITHUB_LINK,
     TAI_ELECTRICAL_LINK,
-} from "../lib/constants/project-links";
+} from "@/lib/constants/project-links";
 
 export default function Home() {
     return (
@@ -49,7 +51,7 @@ export default function Home() {
                                 githubHref={TAI_ELECTRICAL_GITHUB_LINK}
                                 imgSrc="/assets/tai-electrical.png"
                                 title="⚡ Tai Electrical Services"
-                                desc="Built and deployed a production website for a local electrical business, integrating Google reviews, responsive layouts, and conversion-focused contact flows."
+                                desc="Built and deployed a production website for a local electrical business, embedding live Google reviews, responsive layouts, and conversion-focused contact flows."
                                 skills={[
                                     { skill: "React", icon: <ReactIcon /> },
                                     { skill: "Next.js", icon: <NextjsIcon /> },
@@ -76,11 +78,11 @@ export default function Home() {
                             <ClientProject
                                 darkMode
                                 reverse
-                                siteHref="#"
-                                githubHref="#"
+                                siteHref={JACK_TODD_DESIGN_LINK}
+                                githubHref={JACK_TODD_DESIGN_GITHUB_LINK}
                                 imgSrc="/assets/jacktodd-design.png"
                                 title="🎨 Jack Todd Design"
-                                desc="Portfolio website for a graphic designer. Built with Next.js, Sass, and TypeScript, this site showcases the designer's work and features an integrated contact form."
+                                desc="Developed and shipped a portfolio website for a graphic designer, bringing their visual identity to life with Next.js, Sass, and TypeScript, and an integrated contact form."
                                 skills={[
                                     { skill: "React", icon: <ReactIcon /> },
                                     { skill: "Next.js", icon: <NextjsIcon /> },
@@ -111,7 +113,7 @@ export default function Home() {
 
                 <TechnicalSkillsSection />
 
-                <div className="bg-foreground">
+                <div className="bg-transparent">
                     <div className="py-8 bg-background rounded-b-xl" />
                 </div>
             </div>

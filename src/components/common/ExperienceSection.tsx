@@ -1,12 +1,15 @@
-import { BaseSection } from "../layout/BaseSection/BaseSection";
-import { HeadingGroup } from "../layout/HeadingGroup/HeadingGroup";
-import AnimateOnScrollWrapper from "../layout/AnimateOnScrollWrapper";
-import { SECTION_IDS } from "@/src/lib/constants/nav";
+import {
+    AnimateOnScrollWrapper,
+    BaseSection,
+    HeadingGroup,
+} from "@/components/layout";
+import { SECTION_IDS } from "@/lib/constants/nav";
 
 type ExperienceEntry = {
     title: string;
     date: string;
-    points: string[];
+    summary: string;
+    technologies: string[];
 };
 
 type ExperienceCompany = {
@@ -18,67 +21,58 @@ type ExperienceCompany = {
 const experienceData: ExperienceCompany[] = [
     {
         title: "Coles Group",
-        date: "Feb 2022 – Present",
+        date: "2022 – Present",
         roles: [
             {
                 title: "Software Engineer (Store Team Platform Team)",
-                date: "Feb 2024 – Present",
-                points: [
-                    "Led front-end delivery of Location Manager, supporting rollout to 800+ stores and 100,000+ employees.",
-                    "Built reusable React components adopted across multiple squads, reducing duplication and improving consistency across Wave features.",
-                    "Led investigation and resolution of front-end production incidents, improving reliability for 100,000+ internal users.",
-                    "Improved developer experience by restructuring GraphQL architecture and extending Plop generators to automate boilerplate creation.",
-                    "Served as primary code reviewer and front-end lead, enforcing best practices and improving overall code quality.",
-                    "Mentored 2 graduate engineers, accelerating their progression to independent contributors.",
+                date: "2024 – Present",
+                summary:
+                    "Leading front-end delivery for store-team products, focusing on reliable, scalable interfaces and reusable patterns used across squads.",
+                technologies: [
+                    "React",
+                    "TypeScript",
+                    "GraphQL",
+                    "Next.js",
+                    "Jest",
+                    "Playwright",
                 ],
             },
             {
                 title: "Software Engineer (Graduate)",
-                date: "Feb 2023 – Feb 2024",
-                points: [
-                    "**Coles Online (Aug 2023 – Feb 2024):** Developed customer-facing features using React, Next.js, TypeScript for a platform with 15M+ monthly visits. Implemented REST API calls with asynchronous TypeScript, handling loading states, errors, and edge cases. Collaborated with UX/UI designers to translate Figma designs into responsive, interactive web features. Delivered 35+ pull requests in a fast-paced weekly release cycle.",
-                    "**Store Team Platform (Feb 2023 – Aug 2023):** Reduced technical debt by enhancing a DevOps extension in TypeScript, automating release note generation across 10+ repositories. Integrated the extension into CI/CD pipelines and authored technical documentation to facilitate adoption across teams.",
+                date: "2023 – 2024",
+                summary:
+                    "Built customer and internal features across online and platform teams, delivering production-ready UI improvements and developer tooling in a fast release cadence.",
+                technologies: [
+                    "React",
+                    "Next.js",
+                    "TypeScript",
+                    "REST APIs",
+                    "CI/CD",
                 ],
             },
             {
                 title: "Project Manager / Business Analyst (Graduate)",
-                date: "Feb 2022 – Feb 2023",
-                points: [
-                    "Built a ServiceNow dashboard to enhance visibility into incident root causes, reducing P2 incidents by 20%.",
-                    "Increased sprint completion rates from 61% to 80%+ by creating well-defined user stories and applying agile best practices.",
-                    "Streamlined architectural workflows with new forms and processes, facilitating strategic meetings with technology leaders.",
-                ],
+                date: "2022 – 2023",
+                summary:
+                    "Supported delivery teams with agile planning, operational reporting, and process improvements that helped improve incident visibility and execution consistency.",
+                technologies: ["ServiceNow", "Jira", "Confluence", "Agile"],
             },
         ],
     },
     {
         title: "IODM Limited",
-        date: "Jun 2018 – Dec 2020",
+        date: "2018 – 2020",
         roles: [
             {
                 title: "IT Assistant",
-                date: "Jun 2018 – Dec 2020",
-                points: [
-                    "Improved release reliability by developing test suites for a global SaaS platform and managing CRM data accuracy for sales operations.",
-                ],
+                date: "2018 – 2020",
+                summary:
+                    "Contributed to software quality and internal operations by supporting QA workflows and maintaining reliable CRM data.",
+                technologies: ["QA Testing", "SaaS", "CRM"],
             },
         ],
     },
 ];
-
-function renderWithBold(text: string) {
-    return text.split(/(\*\*.*?\*\*)/g).map((part, index) => {
-        const isBold = part.startsWith("**") && part.endsWith("**");
-
-        if (isBold) {
-            return (
-                <strong key={`${part}-${index}`}>{part.slice(2, -2)}</strong>
-            );
-        }
-
-        return <span key={`${part}-${index}`}>{part}</span>;
-    });
-}
 
 export function ExperienceSection() {
     return (
@@ -86,34 +80,34 @@ export function ExperienceSection() {
             <AnimateOnScrollWrapper>
                 <HeadingGroup
                     subtitle="EXPERIENCE"
-                    title="Professional Experience"
+                    title="Experience Snapshot"
                 />
 
                 <div className="mx-auto w-full max-w-4xl">
-                    <div className="space-y-12">
+                    <div className="space-y-10">
                         {experienceData.map((company) => (
-                            <section key={company.title} className="space-y-7">
+                            <section key={company.title} className="space-y-6">
                                 <header className="flex flex-col gap-3 border-b border-default pb-4 sm:flex-row sm:items-end sm:justify-between">
                                     <h3 className="text-heading-3 text-primary">
-                                        {renderWithBold(company.title)}
+                                        {company.title}
                                     </h3>
                                     <p className="text-label text-zinc-700">
                                         {company.date}
                                     </p>
                                 </header>
 
-                                <div className="space-y-8">
+                                <div className="space-y-5">
                                     {company.roles.map((role, index) => (
                                         <article
                                             key={`${company.title}-${role.title}`}
-                                            className="relative space-y-3 pl-8 sm:pl-9">
+                                            className="relative space-y-2.5 pl-8 sm:pl-9">
                                             <span
                                                 aria-hidden="true"
                                                 className={`absolute left-[0.35rem] top-2 w-px bg-linear-to-b from-purple-500/50 via-fuchsia-500/25 to-blue-500/5 ${
                                                     index ===
                                                     company.roles.length - 1
                                                         ? "bottom-0"
-                                                        : "-bottom-12"
+                                                        : "-bottom-8"
                                                 }`}
                                             />
                                             <span
@@ -122,19 +116,26 @@ export function ExperienceSection() {
                                             />
                                             <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                                                 <h4 className="text-lg font-semibold leading-snug text-primary">
-                                                    {renderWithBold(role.title)}
+                                                    {role.title}
                                                 </h4>
                                                 <p className="text-sm text-zinc-700">
                                                     {role.date}
                                                 </p>
                                             </div>
-                                            <ul className="list-disc space-y-2.5 pl-5 text-body text-zinc-700 marker:text-muted">
-                                                {role.points.map((point) => (
-                                                    <li key={point}>
-                                                        {renderWithBold(point)}
-                                                    </li>
-                                                ))}
-                                            </ul>
+                                            <p className="text-body text-zinc-700">
+                                                {role.summary}
+                                            </p>
+                                            <div className="flex flex-wrap gap-2 pt-1">
+                                                {role.technologies.map(
+                                                    (tech) => (
+                                                        <span
+                                                            key={`${role.title}-${tech}`}
+                                                            className="rounded-full border border-default bg-zinc-100/70 px-2.5 py-1 text-xs font-medium text-secondary">
+                                                            {tech}
+                                                        </span>
+                                                    )
+                                                )}
+                                            </div>
                                         </article>
                                     ))}
                                 </div>

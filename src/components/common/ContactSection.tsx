@@ -1,6 +1,6 @@
-import { PERSONAL_EMAIL } from "@/src/lib/constants/contact-info";
-import { GITHUB_LINK, LINKEDIN_LINK } from "@/src/lib/constants/personal-links";
-import { SECTION_IDS } from "@/src/lib/constants/nav";
+import { PERSONAL_EMAIL } from "@/lib/constants/contact-info";
+import { GITHUB_LINK, LINKEDIN_LINK } from "@/lib/constants/personal-links";
+import { SECTION_IDS } from "@/lib/constants/nav";
 import Link from "next/link";
 
 export function ContactSection() {
@@ -11,7 +11,7 @@ export function ContactSection() {
                 className="h-screen pointer-events-none"
                 aria-hidden="true"
             />
-            <section className="fixed inset-0 h-screen -z-10">
+            <section className="fixed inset-0 h-dvh -z-10">
                 <div className="subtle-dot-section-reverse-zinc h-screen overflow-hidden border-t border-zinc-800 bg-foreground text-zinc-100 md:sticky md:bottom-0">
                     <div
                         className="pointer-events-none absolute -right-12 sm:-right-24 top-1/4 sm:top-1/3 h-80 sm:h-112 w-80 sm:w-md -translate-y-1/2 rounded-full bg-linear-to-tr from-purple-500/20 via-fuchsia-500/10 to-blue-500/5 blur-3xl"

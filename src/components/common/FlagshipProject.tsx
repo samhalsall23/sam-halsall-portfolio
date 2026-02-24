@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { SkillPill } from "../ui/SkillPill";
+import { AnimateOnScrollWrapper } from "@/components/layout";
 import {
     NextjsIcon,
     PrismaIcon,
@@ -9,10 +9,14 @@ import {
     StorybookIcon,
     StripeIcon,
     TailwindIcon,
-} from "../icon";
-import { CustomLink } from "../ui/CustomLink";
-import { ProjectLinks } from "../ui/ProjectLinks";
-import AnimateOnScrollWrapper from "../layout/AnimateOnScrollWrapper";
+} from "@/components/icon";
+import { CustomLink, ProjectLinks, SkillPill } from "@/components/ui";
+import {
+    CARTELLE_ADMIN_LINK,
+    CARTELLE_GITHUB_LINK,
+    CARTELLE_LINK,
+    CARTELLE_STORYBOOK_LINK,
+} from "@/lib/constants/project-links";
 
 export function FlagshipProject() {
     return (
@@ -74,8 +78,7 @@ export function FlagshipProject() {
 
                 <div>
                     <h3 className="text-heading-3">
-                        Custom ecommerce storefront, checkout, and admin
-                        platform
+                        Cartelle - Custom eCommerce Platform
                     </h3>
                 </div>
 
@@ -93,10 +96,10 @@ export function FlagshipProject() {
 
                 {/* Positioning statement */}
                 <p className="mt-4 text-body text-secondary">
-                    Built with React and Next.js, Cartelle gives non-technical
-                    teams full control over products and operations, with Stripe
-                    integrated for payments and a dedicated Storybook created
-                    for reusable UI.
+                    Cartelle is a full-stack ecommerce platform built with React
+                    and Next.js, giving non-technical teams complete control
+                    over products and operations. Features Stripe payments and a
+                    Storybook component library for reusable UI.
                 </p>
 
                 {/* CTA section */}
@@ -110,22 +113,22 @@ export function FlagshipProject() {
                     <ProjectLinks
                         items={[
                             {
-                                href: "#",
+                                href: CARTELLE_LINK,
                                 label: "Live Site",
                                 ariaLabel: "Open Cartelle live site",
                             },
                             {
-                                href: "#",
+                                href: CARTELLE_ADMIN_LINK,
                                 label: "Admin (Demo)",
                                 ariaLabel: "Open Cartelle admin demo",
                             },
                             {
-                                href: "#",
+                                href: CARTELLE_STORYBOOK_LINK,
                                 label: "Storybook",
                                 ariaLabel: "Open Cartelle Storybook",
                             },
                             {
-                                href: "#",
+                                href: CARTELLE_GITHUB_LINK,
                                 label: "GitHub",
                                 ariaLabel: "Open Cartelle GitHub repository",
                             },

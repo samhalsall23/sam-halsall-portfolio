@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
 
-import { SkillPill, SkillPillProps } from "../ui/SkillPill";
-import { CustomLink } from "../ui/CustomLink";
-import AnimateOnScrollWrapper from "../layout/AnimateOnScrollWrapper";
+import { AnimateOnScrollWrapper } from "@/components/layout";
+import { CustomLink, SkillPill } from "@/components/ui";
+import type { SkillPillProps } from "@/components/ui";
 
 type ClientProjectProps = {
     darkMode?: boolean;

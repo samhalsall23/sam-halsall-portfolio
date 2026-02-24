@@ -1,7 +1,9 @@
-import AnimateOnScrollWrapper from "../layout/AnimateOnScrollWrapper";
-import { BaseSection } from "../layout/BaseSection/BaseSection";
-import { HeadingGroup } from "../layout/HeadingGroup/HeadingGroup";
-import { SECTION_IDS } from "@/src/lib/constants/nav";
+import {
+    AnimateOnScrollWrapper,
+    BaseSection,
+    HeadingGroup,
+} from "@/components/layout";
+import { SECTION_IDS } from "@/lib/constants/nav";
 
 export function TechnicalSkillsSection() {
     return (

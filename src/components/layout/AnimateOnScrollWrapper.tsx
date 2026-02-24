@@ -3,16 +3,14 @@
 import { ReactNode, useRef } from "react";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
-import { cn } from "@/src/lib/utilities/cn";
+import { cn } from "@/lib/utilities/cn";
 
 type AnimateOnScrollWrapperProps = {
     children: ReactNode;
     className?: string;
 };
 
-export default function AnimateOnScrollWrapper(
-    props: AnimateOnScrollWrapperProps
-) {
+export function AnimateOnScrollWrapper(props: AnimateOnScrollWrapperProps) {
     // === PROPS ===
     const { children, className } = props;
 

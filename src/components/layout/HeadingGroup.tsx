@@ -1,4 +1,4 @@
-import AnimateOnScrollWrapper from "../AnimateOnScrollWrapper";
+import { AnimateOnScrollWrapper } from "./AnimateOnScrollWrapper";
 
 type HeadingGroupProps = {
     title: string;
