@@ -32,6 +32,26 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
             />
         ),
         li: (props) => <li {...props} />,
+        table: (props) => (
+            <table
+                className="my-6 w-full border-collapse text-body text-blog"
+                {...props}
+            />
+        ),
+        thead: (props) => (
+            <thead className="border-b text-sm border-default" {...props} />
+        ),
+        tbody: (props) => (
+            <tbody className="divide-y text-sm divide-subtle/50" {...props} />
+        ),
+        tr: (props) => <tr className="align-top" {...props} />,
+        th: (props) => (
+            <th
+                className="px-3 py-2 text-left font-semibold text-primary"
+                {...props}
+            />
+        ),
+        td: (props) => <td className="px-3 py-2 align-top" {...props} />,
         blockquote: (props) => (
             <blockquote
                 className="border-l-2 border-default pl-4 text-body text-blog italic"

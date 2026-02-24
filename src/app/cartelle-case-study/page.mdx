@@ -20,17 +20,33 @@ import {
 
 # 🛒 Cartelle - Custom eCommerce Platform
 
-[Visit here](https://cartelle-mock-store.vercel.app/)
+A fully custom ecommerce platform built with Next.js (App Router), Prisma, and Stripe, focused on inventory safety and clear server architecture.
+
+## 🔗 Live Links
+
+-   **Storefront** - https://cartelle-mock-store.vercel.app
+-   **Admin** - https://cartelle-mock-store.vercel.app/admin
+-   **Storybook** - https://cartelle-mock-store-storybook.vercel.app/
 
 ## 🎯 Goal
 
-To explore how a fully customisable ecommerce platform could be built outside of Shopify, with complete control over architecture, checkout logic, and admin tooling using a modern full-stack React stack.
+Demonstrate how to build a scalable, fully custom ecommerce platform with inventory control, Stripe checkout, and admin tooling using a modern full-stack React architecture.
+
+## 🏗️ Architecture Overview
+
+Built with Next.js (App Router) using Server Components and Server Actions for data mutations. Prisma + PostgreSQL handle persistence, and Stripe manages payment intents and webhooks.
 
 ## 🎬 Demo
 
 Here is a video of a complete checkout flow with stripe integration:
 
-## 🧠 System Design Decisions
+## 🧩 Key Engineering Decisions
+
+-   Checkout-time inventory reservation to prevent overselling.
+-   Clear boundary between Server Actions and API Routes.
+-   Container/presentational component split for Storybook isolation.
+
+## 🧠 System Design Deep Dive
 
 ### 1️⃣ Inventory Reservation
 
@@ -72,25 +88,45 @@ Here is a video of a complete checkout flow with stripe integration:
 
 **Solution:** Split components into two layers following the container/presentational pattern:
 
--   `CheckoutButton` — contains the Server Action and logic
--   `CheckoutButtonUI` — receives everything as props and is pure JSX
+-   `CheckoutButton` - contains the Server Action and logic
+-   `CheckoutButtonUI` - receives everything as props and is pure JSX
 
 This means the UI layer can be rendered in any context, including Storybook, without needing a server environment.
 
 **Trade-offs:** This approach introduces more files and prop drilling. It also complicates barrel exporting, as exporting server components and client components from the same index.ts can cause conflicts in Storybook.
 
-## 🧩 MDX component example
+## ✨ Features
 
-```tsx
-<Callout title="Key decision">
-    Use reusable MDX components for hero, metrics, and CTA blocks so each new
-    case study keeps the same visual quality.
-</Callout>
-```
+-   🛒 **Persistent cart with server-side mutations** - cookie-backed cart ID, quantity guardrails, and transactional updates for line items.
+-   💳 **Stripe checkout with webhook-driven order lifecycle** - payment intent creation, multi-step checkout UI, and webhook-based order state transitions.
+-   📦 **Checkout-time inventory reservation** - stock is locked at checkout, released on timeout, and finalized on successful payment.
+-   ⚙️ **Admin CMS for products and blog** - create/edit tooling for catalog, authors, and content with role-friendly flows.
+-   📚 **Storybook-driven component system** - isolated UI previews, reusable presentational components, and faster iteration.
 
-> "MDX gave us the speed of markdown with the flexibility of React components — perfect for case studies that need both narrative and structure."
+## 🛠️ Tech Stack
 
-            </article>
+| Area      | Choice                             | Notes                                                            |
+| --------- | ---------------------------------- | ---------------------------------------------------------------- |
+| Framework | Next.js 16 (App Router)            | React Compiler enabled; server components + route handlers       |
+| Language  | TypeScript                         | Full-stack typing                                                |
+| Styling   | Tailwind CSS 4                     | `tailwind-merge`, `tw-animate-css`                               |
+| UI        | shadcn/ui + Radix primitives       | Form controls, dialogs, admin UI building blocks                 |
+| Animation | Framer Motion                      | Section and component transitions                                |
+| Forms     | react-hook-form + zod              | Checkout and admin form validation                               |
+| Data      | Prisma ORM + PostgreSQL            | Products, sizes, carts, orders, blog posts, authors              |
+| Payments  | Stripe                             | Payment intents + webhook event processing                       |
+| Storage   | Vercel Blob                        | Product/blog/author asset storage                                |
+| Tables    | TanStack React Table               | Admin listing tables                                             |
+| Tooling   | ESLint, Prettier, Storybook, Husky | Linting/formatting/component development and pre-commit workflow |
+
+## 🚀 If Taken to Production
+
+-   **Security** - Add proper authentication and role-based access control for the admin dashboard (currently demo-flag gated).
+-   **Testing** - Add integration tests covering Server Actions, checkout flow, and Stripe webhook lifecycle.
+-   **Observability** - Add structured logging and alerting around Stripe webhooks and background cleanup jobs.
+-   **Product & UX** - Introduce smarter product recommendations on PDPs.
+
+ </article>
         </div>
     </BaseSection>
 
