@@ -9,7 +9,7 @@ type ExperienceEntry = {
     title: string;
     date: string;
     summary: string;
-    technologies: string[];
+    technologies?: string[];
 };
 
 type ExperienceCompany = {
@@ -30,9 +30,9 @@ const experienceData: ExperienceCompany[] = [
                     "Leading front-end delivery for store-team products, focusing on reliable, scalable interfaces and reusable patterns used across squads.",
                 technologies: [
                     "React",
+                    "Next.js",
                     "TypeScript",
                     "GraphQL",
-                    "Next.js",
                     "Jest",
                     "Playwright",
                 ],
@@ -55,7 +55,6 @@ const experienceData: ExperienceCompany[] = [
                 date: "2022 – 2023",
                 summary:
                     "Supported delivery teams with agile planning, operational reporting, and process improvements that helped improve incident visibility and execution consistency.",
-                technologies: ["ServiceNow", "Jira", "Confluence", "Agile"],
             },
         ],
     },
@@ -68,7 +67,6 @@ const experienceData: ExperienceCompany[] = [
                 date: "2018 – 2020",
                 summary:
                     "Contributed to software quality and internal operations by supporting QA workflows and maintaining reliable CRM data.",
-                technologies: ["QA Testing", "SaaS", "CRM"],
             },
         ],
     },
@@ -126,7 +124,7 @@ export function ExperienceSection() {
                                                 {role.summary}
                                             </p>
                                             <div className="flex flex-wrap gap-2 pt-1">
-                                                {role.technologies.map(
+                                                {role.technologies?.map(
                                                     (tech) => (
                                                         <span
                                                             key={`${role.title}-${tech}`}

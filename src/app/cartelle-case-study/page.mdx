@@ -1,0 +1,79 @@
+import Link from "next/link";
+import {
+    AnimateOnScrollWrapper,
+    BaseSection,
+    HeadingGroup,
+} from "@/components/layout";
+
+<main className="bg-background min-h-screen py-24 sm:py-28">
+    <BaseSection id="cartelle-case-study" className="bg-background">
+        <div className="mx-auto w-full max-w-3xl">
+            <div className="mb-8">
+                <Link
+                    href="/"
+                    className="text-body-sm text-secondary transition hover:text-primary">
+                    ← Back to portfolio
+                </Link>
+            </div>
+
+            <article className="mt-4 space-y-8 rounded-2xl border border-default bg-white/70 p-6 shadow-xs sm:p-8 md:p-10">
+
+# 🛒 Cartelle - Custom eCommerce Platform
+
+[Visit here](https://cartelle-mock-store.vercel.app/)
+
+## 🎯 Goal
+
+To explore how a fully customisable ecommerce platform could be built outside of Shopify, with complete control over architecture, checkout logic, and admin tooling using a modern full-stack React stack.
+
+## 🎬 Demo
+
+Here is a video of a complete checkout flow with stripe integration:
+
+## 🧠 System Design Decisions
+
+### 1️⃣ Inventory Reservation
+
+**Problem:** Multiple users can enter the checkout flow with the same item in their cart. If their combined quantity exceeds available stock, both users could complete the entire checkout flow and trigger the Stripe webhook before the system detects the oversell.
+
+**Alternatives considered:**
+
+1. Check stock at payment confirmation: Validate when the Stripe webhook fires, but this means users may not discover stock issues until after entering all payment details.
+2. Reserve stock at add to cart: Temporarily hold the item for a user when they add it to their cart. Avoided as stock would be locked by people who are just browsing and never intend to buy.
+
+**Solution:** Reserve stock when the checkout button is clicked. Once a user initiates checkout, the conversion intent is higher at this stage, so stock is reserved only for users who are more likely to complete their purchase. To handle abandoned checkouts, we set up a cron job using an API route and `vercel.json` to move carts from `CHECKOUT` to `ABANDONED` after 15 minutes of inactivity.
+
+**Trade-offs:** Being on a Vercel Hobby plan meant that the cron job could run only once a day. In a production system this would be replaced with a more frequent job or a Redis-based time to live on the reservation key, which handles expiry atomically at the data layer.
+
+### 2️⃣ Server Actions vs API Routes
+
+**Problem:** Next.js supports both Server Actions and API Routes for handling server-side logic, but using them interchangeably without a clear convention leads to inconsistency. The question was: when should each be used, and why?
+
+**Alternatives considered:**
+
+1. Use API routes for everything: The traditional Next.js approach but introduces unnecessary HTTP overhead for simple data mutations that don't need to be externally accessible.
+2. Use Server Actions for everything: Removes HTTP overhead entirely but Server Actions cannot receive requests from external services or handle certain browser APIs.
+
+**Solution:** Use Server Actions as the default for most data mutations since they run directly on the server without a dedicated HTTP endpoint, reducing overhead. However, API routes are used in three specific cases where Server Actions are not viable:
+
+1. When passing large files. Server Actions have a payload size limit, so sending large binary files through them will fail or be rejected.
+2. When an external service needs to call your endpoint, such as a Stripe webhook or CRON job from `vercel.json`. Server Actions can only be invoked by your own application.
+
+**Trade-offs:** Relying primarily on Server Actions makes debugging more challenging, as there is no clear request/response cycle that API routes expose in the network tab.
+
+## 🧩 MDX component example
+
+```tsx
+<Callout title="Key decision">
+    Use reusable MDX components for hero, metrics, and CTA blocks so each new
+    case study keeps the same visual quality.
+</Callout>
+```
+
+> "MDX gave us the speed of markdown with the flexibility of React components — perfect for case studies that need both narrative and structure."
+
+            </article>
+        </div>
+    </BaseSection>
+
+</main>

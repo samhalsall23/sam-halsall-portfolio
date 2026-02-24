@@ -6,6 +6,7 @@
 
     /* ===== DESIGN SYSTEM - TEXT COLORS ===== */
     --primary: #18181b; /* zinc-900 - Main headings, important text */
+    --blog: #3f3f46; /* zinc-700 - Blog body text */
     --secondary: #71717a; /* zinc-500 - Body text, descriptions */
     --muted: #a1a1aa; /* zinc-400 - Subtle text, labels */
     --subtle: #d4d4d8; /* zinc-300 - Very light text */
@@ -23,6 +24,7 @@
 
     /* Expose design tokens to Tailwind */
     --color-primary: var(--primary);
+    --color-blog: var(--blog);
     --color-secondary: var(--secondary);
     --color-muted: var(--muted);
     --color-subtle: var(--subtle);
