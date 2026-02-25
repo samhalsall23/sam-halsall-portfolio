@@ -140,7 +140,7 @@ export function Navbar() {
                                                 // Use setTimeout to fix race condition between menu closing and scrollIntoView
                                                 setTimeout(
                                                     () => scrollToSection(id),
-                                                    0
+                                                    50
                                                 );
                                             }}
                                             className="group block relative h-6 px-2">

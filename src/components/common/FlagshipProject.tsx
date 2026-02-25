@@ -17,6 +17,7 @@ import {
     CARTELLE_LINK,
     CARTELLE_STORYBOOK_LINK,
 } from "@/lib/constants/project-links";
+import { ROUTES } from "@/lib/constants/routes";
 
 export function FlagshipProject() {
     return (
@@ -106,7 +107,7 @@ export function FlagshipProject() {
                 <div className="mt-6 flex flex-col gap-5 border-t border-subtle pt-4 md:flex-row md:items-center md:justify-between">
                     <CustomLink
                         className="w-full md:w-auto"
-                        href="#"
+                        href={ROUTES.cartelleCaseStudy}
                         text="View case study"
                     />
 
