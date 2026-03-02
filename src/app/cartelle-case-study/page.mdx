@@ -42,6 +42,20 @@ Built with Next.js (App Router) using Server Components and Server Actions for d
 
 Here is a video of a complete checkout flow with stripe integration:
 
+<div className="overflow-hidden rounded-md border border-default shadow-xs">
+    <div className="aspect-video w-full">
+        <iframe
+            className="h-full w-full"
+            src="https://www.youtube.com/embed/1VjTK7Kmcd8"
+            title="Cartelle checkout flow demo"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+        />
+    </div>
+</div>
+
 ## 🧩 Key Engineering Decisions
 
 -   Checkout-time inventory reservation to prevent overselling.
@@ -102,7 +116,7 @@ This means the UI layer can be rendered in any context, including Storybook, wit
 -   🛒 **Persistent cart with server-side mutations** - cookie-backed cart ID, quantity guardrails, and transactional updates for line items.
 -   💳 **Stripe checkout with webhook-driven order lifecycle** - payment intent creation, multi-step checkout UI, and webhook-based order state transitions.
 -   📦 **Checkout-time inventory reservation** - stock is locked at checkout, released on timeout, and finalized on successful payment.
--   ⚙️ **Admin CMS for products and blog** - create/edit tooling for catalog, authors, and content with role-friendly flows.
+-   ⚙️ **Admin CMS for products and blog** - create/edit tooling for products, authors, and content with role-friendly flows.
 -   📚 **Storybook-driven component system** - isolated UI previews, reusable presentational components, and faster iteration.
 
 ## 🛠️ Tech Stack
@@ -117,6 +131,12 @@ This means the UI layer can be rendered in any context, including Storybook, wit
 -   Vercel Blob
 -   TanStack Table
 -   Storybook
+
+## 🎨 Design Attribution
+
+The visual direction for this project was inspired by the [Cartelle Framer template](https://www.framer.com/marketplace/templates/cartelle/).
+
+No template code was used. The implementation was developed independently from design references (wireframes and typography) and extended with additional custom pages and features.
 
 ## 🚀 If Taken to Production
 
