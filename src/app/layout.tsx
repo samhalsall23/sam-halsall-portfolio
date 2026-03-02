@@ -9,9 +9,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-    title: "Sam Halsall Portfolio",
+    title: {
+        default: "Sam Halsall | Front-End Engineer",
+        template: "%s | Sam Halsall",
+    },
     description:
         "Sam Halsall — Front-end React, Next.js, and TypeScript engineer",
+    applicationName: "Sam Halsall Portfolio",
 };
 
 export default function RootLayout({

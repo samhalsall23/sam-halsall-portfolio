@@ -27,7 +27,7 @@ const experienceData: ExperienceCompany[] = [
                 title: "Software Engineer (Store Team Platform Team)",
                 date: "2024 – Present",
                 summary:
-                    "Leading front-end delivery for store-team products, focusing on reliable, scalable interfaces and reusable patterns used across squads.",
+                    "Owned front-end delivery of Location Manager across 800+ stores and 100,000+ employees. Coordinated contractors, led code reviews, mentored graduates, and drove incident resolution during a live rollout.",
                 technologies: [
                     "React",
                     "Next.js",
@@ -41,7 +41,7 @@ const experienceData: ExperienceCompany[] = [
                 title: "Software Engineer (Graduate)",
                 date: "2023 – 2024",
                 summary:
-                    "Built customer and internal features across online and platform teams, delivering production-ready UI improvements and developer tooling in a fast release cadence.",
+                    "Shipped allergen and dietary features on one of Australia's top-50 websites (~17M monthly users) and built internal tooling to automate release notes across 10+ repos.",
                 technologies: [
                     "React",
                     "Next.js",
@@ -54,19 +54,7 @@ const experienceData: ExperienceCompany[] = [
                 title: "Project Manager / Business Analyst (Graduate)",
                 date: "2022 – 2023",
                 summary:
-                    "Supported delivery teams with agile planning, operational reporting, and process improvements that helped improve incident visibility and execution consistency.",
-            },
-        ],
-    },
-    {
-        title: "IODM Limited",
-        date: "2018 – 2020",
-        roles: [
-            {
-                title: "IT Assistant",
-                date: "2018 – 2020",
-                summary:
-                    "Contributed to software quality and internal operations by supporting QA workflows and maintaining reliable CRM data.",
+                    "Improved sprint completion rates from 61% to 80%+ and built dashboards to surface incident trends, reducing P2 incidents by 20%.",
             },
         ],
     },

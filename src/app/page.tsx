@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { BaseSection, HeadingGroup, HeroSection } from "@/components/layout";
 import {
     ClientProject,
@@ -19,6 +20,12 @@ import {
     TAI_ELECTRICAL_GITHUB_LINK,
     TAI_ELECTRICAL_LINK,
 } from "@/lib/constants/project-links";
+
+export const metadata: Metadata = {
+    title: "Sam Halsall | Portfolio",
+    description:
+        "Portfolio of Sam Halsall, front-end engineer specialising in React, Next.js, and TypeScript.",
+};
 
 export default function Home() {
     return (

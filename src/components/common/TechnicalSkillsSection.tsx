@@ -44,7 +44,7 @@ export function TechnicalSkillsSection() {
                             Tools & Platforms
                         </p>
                         <p className="text-body text-primary">
-                            Azure · Git · CI/CD
+                            Azure · Git · CI/CD · Datadog · Sentry
                         </p>
                     </div>
 
