@@ -66,50 +66,70 @@ Here is a video of a complete checkout flow with stripe integration:
 
 ### 1️⃣ Inventory Reservation
 
-**Problem:** Multiple users can enter the checkout flow with the same item in their cart. If their combined quantity exceeds available stock, both users could complete the entire checkout flow and trigger the Stripe webhook before the system detects the oversell.
+**Problem:**
+
+Two or more users can start checkout for the same product at the same time. If their total requested quantity is greater than available stock, both can reach payment before the system validates quantity, causing an oversell.
 
 **Alternatives considered:**
 
-1. Check stock at payment confirmation: Validate when the Stripe webhook fires, but this means users may not discover stock issues until after entering all payment details.
-2. Reserve stock at add to cart: Temporarily hold the item for a user when they add it to their cart. Avoided as stock would be locked by people who are just browsing and never intend to buy.
+1. **Validate quantity in the Stripe webhook:** Rejected because users would only discover stock issues _after_ entering their payment details, creating a poor user experience.
+2. **Reserve stock at add to cart:** Temporarily hold the item for a user when they add it into their cart. This approach was avoided as stock would be locked by people who are just browsing and never intend to buy.
 
-**Solution:** Reserve stock when the checkout button is clicked. Once a user initiates checkout, the conversion intent is higher at this stage, so stock is reserved only for users who are more likely to complete their purchase. To handle abandoned checkouts, we set up a cron job using an API route and `vercel.json` to move carts from `CHECKOUT` to `ABANDONED` after 15 minutes of inactivity.
+**Solution:**
 
-**Trade-offs:** Being on a Vercel Hobby plan meant that the cron job could run only once a day. In a production system this would be replaced with a more frequent job or a Redis-based time to live on the reservation key, which handles expiry atomically at the data layer.
+**Stock is reserved when the user clicks checkout:** At this stage, purchase intent is significantly higher than at “Add to Cart,” making it a better balance between protecting inventory and preserving availability. When checkout is initiated, the cart status moves to CHECKOUT and the reserved quantity is deducted from available stock.
+
+To handle abandoned checkouts, a scheduled job (implemented via an API route and configured in `vercel.json`) transitions carts from `CHECKOUT` to `ABANDONED` after 15 minutes of inactivity, releasing the reserved stock back into inventory.
+
+**Trade-offs:**
+
+Being on a Vercel Hobby plan meant that the cron job could run only once a day. In a production system this would be replaced with a more frequent job or a Redis-based time to live on the reservation key, which handles expiry atomically at the data layer.
 
 ### 2️⃣ Server Actions vs API Routes
 
-**Problem:** Next.js supports both Server Actions and API Routes for handling server-side logic, but using them interchangeably without a clear convention leads to inconsistency. The question was: when should each be used, and why?
+**Problem:**
+
+Next.js supports both Server Actions and API Routes for server-side logic. Without a clear rule for when to use each, the codebase becomes inconsistent and harder to maintain.
 
 **Alternatives considered:**
 
-1. Use API routes for everything: The traditional Next.js approach but introduces unnecessary HTTP overhead for simple data mutations that don't need to be externally accessible.
-2. Use Server Actions for everything: Removes HTTP overhead entirely but Server Actions cannot receive requests from external services or handle certain browser APIs.
+1. **Use API routes for everything:** Familiar and explicit, but adds unnecessary HTTP overhead for simple internal mutations that do not need public endpoints.
+2. **Use Server Actions for everything:** Removes HTTP overhead, but cannot handle external callbacks (for example webhooks/cron) and is not suitable for all payload types.
 
-**Solution:** Use Server Actions as the default for most data mutations since they run directly on the server without a dedicated HTTP endpoint, reducing overhead. However, API routes are used in three specific cases where Server Actions are not viable:
+**Solution:**
 
-1. When passing large files. Server Actions have a payload size limit, so sending large binary files through them will fail or be rejected.
-2. When an external service needs to call your endpoint, such as a Stripe webhook or CRON job from `vercel.json`. Server Actions can only be invoked by your own application.
+**Use Server Actions by default, and API Routes for integration boundaries:** Most app-owned mutations use Server Actions for lower overhead. API Routes are reserved for cases where Server Actions are not a fit:
 
-**Trade-offs:** Relying primarily on Server Actions makes debugging more challenging, as there is no clear request/response cycle that API routes expose in the network tab.
+1. **Large file payloads:** Server Actions have payload constraints, so large binary uploads should go through API Routes.
+2. **External callers:** Stripe webhooks and CRON triggers from `vercel.json` require an HTTP endpoint.
+
+**Trade-offs:**
+
+A Server-Action-first approach can make debugging less transparent because there is no explicit request/response cycle in the browser network tab like there is with API routes.
 
 ### 3️⃣ Component Splitting
 
-**Problem:** Components that mix server-side logic with JSX are difficult to test and preview in isolation. A component tightly coupled to Server Actions or data fetching cannot be rendered without its full execution context.
+**Problem:**
+
+Components that mix server logic and JSX are hard to test and preview in isolation. If a component depends directly on Server Actions or data fetching, it cannot be rendered without full app context.
 
 **Alternatives considered:**
 
-1. Keep logic and UI together: Simpler file structure but makes isolated testing and visual storybook previewing impossible without mocking the entire server context.
-2. Mock server context in Storybook: Adds complexity to the testing setup that breaks when server logic changes.
+1. **Keep logic and UI together:** Simpler structure, but poor Storybook compatibility and harder isolated testing.
+2. **Mock server context in Storybook:** Possible, but adds maintenance overhead and tends to break as server logic evolves.
 
-**Solution:** Split components into two layers following the container/presentational pattern:
+**Solution:**
 
--   `CheckoutButton` - contains the Server Action and logic
--   `CheckoutButtonUI` - receives everything as props and is pure JSX
+**Split into container and presentational layers:**
+
+-   `CheckoutButton` - owns Server Action wiring and control flow
+-   `CheckoutButtonUI` - pure presentational JSX driven by props
 
 This means the UI layer can be rendered in any context, including Storybook, without needing a server environment.
 
-**Trade-offs:** This approach introduces more files and prop drilling. It also complicates barrel exporting, as exporting server components and client components from the same index.ts can cause conflicts in Storybook.
+**Trade-offs:**
+
+This adds files and prop plumbing, and it can complicate barrel exports because mixing server/client exports in the same `index.ts` may conflict with Storybook.
 
 ## ✨ Features
 

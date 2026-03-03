@@ -14,20 +14,20 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         ),
         h3: (props) => (
             <h3
-                className="text-xl font-semibold leading-snug text-primary mt-6"
+                className="text-xl font-semibold leading-snug text-primary mt-8 mb-4"
                 {...props}
             />
         ),
-        p: (props) => <p className="text-body text-blog" {...props} />,
+        p: (props) => <p className="mb-4 text-body text-blog" {...props} />,
         ul: (props) => (
             <ul
-                className="list-disc space-y-2 pl-5 text-body text-blog marker:text-muted"
+                className="list-disc space-y-2 pl-5 text-body text-blog marker:text-muted mb-4"
                 {...props}
             />
         ),
         ol: (props) => (
             <ol
-                className="list-decimal space-y-2 pl-5 text-body text-blog marker:text-muted"
+                className="list-decimal space-y-2 pl-5 text-body text-blog marker:text-muted mb-4"
                 {...props}
             />
         ),

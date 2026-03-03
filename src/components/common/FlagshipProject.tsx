@@ -39,11 +39,11 @@ export function FlagshipProject() {
                     aria-hidden="true"
                 />
                 <div
-                    className="pointer-events-none absolute -right-16 -top-14 h-72 w-72 scale-90 rounded-full bg-[radial-gradient(circle,#8b5cf6_0%,#7c3aed_38%,rgba(124,58,237,0.18)_68%,transparent_100%)] opacity-25 blur-[70px] saturate-75 transition-all duration-350 ease-in-out group-hover:scale-110 group-hover:opacity-55 group-hover:saturate-100"
+                    className="pointer-events-none absolute -right-16 -top-14 h-72 w-72 scale-90 rounded-full bg-[radial-gradient(circle,#8b5cf6_0%,#7c3aed_38%,rgba(124,58,237,0.18)_68%,transparent_100%)] opacity-25 blur-[48px] transition-[transform,opacity] duration-350 ease-in-out group-hover:scale-110 group-hover:opacity-55"
                     aria-hidden="true"
                 />
                 <div
-                    className="pointer-events-none absolute -left-20 top-1/2 h-80 w-80 -translate-y-1/2 scale-90 rounded-full bg-[radial-gradient(circle,#60a5fa_0%,#3b82f6_35%,rgba(59,130,246,0.2)_68%,transparent_100%)] opacity-25 blur-[72px] saturate-75 transition-all duration-350 ease-in-out group-hover:scale-110 group-hover:opacity-55 group-hover:saturate-100"
+                    className="pointer-events-none absolute -left-20 top-1/2 h-80 w-80 -translate-y-1/2 scale-90 rounded-full bg-[radial-gradient(circle,#60a5fa_0%,#3b82f6_35%,rgba(59,130,246,0.2)_68%,transparent_100%)] opacity-25 blur-[48px] transition-[transform,opacity] duration-350 ease-in-out group-hover:scale-110 group-hover:opacity-55"
                     aria-hidden="true"
                 />
                 <div className="relative translate-y-2.5 sm:translate-y-2 group-hover:translate-y-0 translate-x-6 transition-transform duration-300 ease-in-out scale-90 group-hover:scale-95 aspect-video mx-auto bg-">
@@ -58,25 +58,21 @@ export function FlagshipProject() {
                         </span>
                         <span className="w-13" aria-hidden="true" />
                     </div>
-                    <Image
-                        className="relative z-10 translate-y-3.5 sm:translate-y-2.5 md:translate-y-2 object-contain brightness-97% group-hover:brightness-100 transition duration-300 ease-in-out"
-                        src="/assets/cartelle-productts-5.png"
-                        alt="Cartelle Project"
-                        fill
-                    />
+                    <div className="relative w-full overflow-hidden rounded-b-md bg-white">
+                        <Image
+                            className="relative z-10 block h-auto w-full object-contain"
+                            src="/assets/cartelle-productts-5.png"
+                            alt="Cartelle Project"
+                            width={2930}
+                            height={1464}
+                        />
+                    </div>
                 </div>
             </Link>
 
             {/* Description */}
             <div className="mt-8 px-2 w-full max-w-4xl mx-auto">
                 {/* Project identity */}
-                {/* <div className="flex items-center gap-3">
-                            🛒
-                            <span className="text-sm uppercase tracking-widest text-secondary">
-                                Cartelle E-commerce Platform
-                            </span>
-                        </div> */}
-
                 <div>
                     <h3 className="text-heading-3">
                         Cartelle - Custom eCommerce Platform

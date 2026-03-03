@@ -24,18 +24,21 @@ export function AnimateOnScrollWrapper(props: AnimateOnScrollWrapperProps) {
     });
 
     const rawOpacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
-    const rawY = useTransform(scrollYProgress, [0, 1], [16, 0]);
+    const rawTranslateY = useTransform(scrollYProgress, [0, 1], [16, 0]);
     const rawScale = useTransform(scrollYProgress, [0, 1], [0.98, 1]);
 
     const opacity = useSpring(rawOpacity, { stiffness: 220, damping: 28 });
-    const y = useSpring(rawY, { stiffness: 220, damping: 28 });
+    const translateY = useSpring(rawTranslateY, {
+        stiffness: 220,
+        damping: 28,
+    });
     const scale = useSpring(rawScale, { stiffness: 220, damping: 28 });
 
     return (
         <motion.div
             ref={ref}
             className={cn(className)}
-            style={{ opacity, y, scale }}>
+            style={{ opacity, translateY, scale }}>
             {children}
         </motion.div>
     );
