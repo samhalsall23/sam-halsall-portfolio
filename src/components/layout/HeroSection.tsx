@@ -54,7 +54,7 @@ export function HeroSection() {
                             text="Contact me"
                         />
                         <CustomLink
-                            href="/assets/Sam_Halsall_CV_2026.pdf"
+                            href="/assets/Sam_Halsall_CV.pdf"
                             text="View resume"
                             variant="secondary"
                         />
