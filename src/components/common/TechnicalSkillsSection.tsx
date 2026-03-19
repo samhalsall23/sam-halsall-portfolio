@@ -20,7 +20,7 @@ export function TechnicalSkillsSection() {
                             Languages & Frameworks
                         </p>
                         <p className="text-body text-primary">
-                            TypeScript · ReactJS · NextJS · HTML · CSS · Sass ·
+                            TypeScript · React · Next.js · HTML · CSS · Sass ·
                             Tailwind · Bootstrap
                         </p>
                     </div>
